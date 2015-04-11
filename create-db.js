@@ -2,7 +2,7 @@
 
 var mongojs = require("mongojs");
 
-var db = mongojs("cookbook", ["ingredients"]);
+var db = mongojs("cookbook", ["ingredients", "recipes", "recipesIngr"]);
 
 function initDatabase (done) {
   db.createCollection("ingredients", function (err, res) {
@@ -14,14 +14,6 @@ function initDatabase (done) {
       if (err) return done(err);
       return done();
     });
-
-
-
-
-
-
-    var ingr = db.ingredients.find();
-    console.log("ingredients was created " + ingr.length);
   });
 }
 
@@ -30,7 +22,7 @@ function insertIngredient(data){
 	    {
 	        if(error)
 	        {
-	            console.log(error);
+	            console.log("error on save:  " + error);
 	        }
 
 	        else
@@ -38,14 +30,12 @@ function insertIngredient(data){
 	            console.log("saved");
 	        }
 	    } );
-	var ttt = db.ingredients.find();
-	console.log("length = " + ttt.length);
 }
 
 initDatabase(function (err) {
 	if(err){
 			console.log("can't create ingredients" + err);
-           db.close();
+			db.close();
 	}
     else{
     	console.log("start insert");
@@ -66,7 +56,20 @@ insertIngredient( { Name: "Морковь красная", BE: 0.58, Calories: 3
 insertIngredient( { Name: "Сахарный песок", BE: 10, Calories: 399, Prot: 0, Fat: 0, NFattyAcids: 0, Carb: 99.8, K: 3, Na: 1, Mg: 0, Ca: 3, VitC: 0, VitB5: 0, VitPP: 0, Fiber: 0, Water: 0.1 } );
 insertIngredient( { Name: "Цедра лимонная", BE: 0.42, Calories: 47, Prot: 1.5, Fat: 0.3, NFattyAcids: 5.4, Carb: 5.4, K: 160, Na: 6, Mg: 15, Ca: 134, VitC: 129, VitB5: 0.32, VitPP: 0, Fiber: 10.6, Water: 81.6 } );
 insertIngredient( { Name: "Масло оливковое", BE: 0, Calories: 898, Prot: 0, Fat: 99.8, NFattyAcids: 13.2, Carb: 0, K: 1, Na: 2, Mg: 0, Ca: 0, VitC: 0, VitB5: 0, VitPP: 0, Fiber: 0, Water: 0.2 } );
+insertIngredient( { Name: "Свекла", BE: 0.9, Calories: 42, Prot: 1.5, Fat: 0.1, NFattyAcids: 0, Carb: 8.8, K: 288, Na: 46, Mg: 22, Ca: 37, VitC: 10, VitB5: 0.1, VitPP: 0.2, Fiber: 2.5, Water: 86 } );
+insertIngredient( { Name: "Морская капуста", BE: 0, Calories: 24.9, Prot: 0.9, Fat: 0.2, NFattyAcids: 0, Carb: 3, K: 970, Na: 520, Mg: 170, Ca: 40, VitC: 2, VitB5: 0, VitPP: 0.4, Fiber: 0.6, Water: 88 } );
+insertIngredient( { Name: "Майонез", BE: 0.25, Calories: 627, Prot: 2.4, Fat: 67, NFattyAcids: 42.5, Carb: 3.9, K: 63, Na: 513, Mg: 11, Ca: 57, VitC: 0, VitB5: 0, VitPP: 0.1, Fiber: 0, Water: 25 } );
+insertIngredient( { Name: "Сыр Пармезан 40%", BE: 0, Calories: 392, Prot: 35.75, Fat: 25.83, NFattyAcids: 0, Carb: 3.22, K: 92, Na: 1062, Mg: 44, Ca: 1184, VitC: 0, VitB5: 0.45, VitPP: 0, Fiber: 0, Water: 29.16 } );
+insertIngredient( { Name: "Имбирь корень", BE: 5.2, Calories: 80, Prot: 7.28, Fat: 6.75, NFattyAcids: 0, Carb: 63.08, K: 1.5, Na: 32, Mg: 184, Ca: 116, VitC: 12, VitB5: 0.2, VitPP: 0.75, Fiber: 5.9, Water: 78.89 } );
+insertIngredient( { Name: "Чеснок", BE: 1.77, Calories: 149, Prot: 6.5, Fat: 0.5, NFattyAcids: 0.1, Carb: 29.9, K: 260, Na: 17, Mg: 0, Ca: 180, VitC: 10, VitB5: 0.6, VitPP: 1.2, Fiber: 1.5, Water: 60 } );
+insertIngredient( { Name: "Печень куриная", BE: 0.08, Calories: 137.6, Prot: 20.4, Fat: 5.9, NFattyAcids: 5.28, Carb: 3.73, K: 289, Na: 90, Mg: 24, Ca: 15, VitC: 25, VitB5: 2.62, VitPP: 0, Fiber: 0, Water: 62.65 } );
+insertIngredient( { Name: "Сливки 35%", BE: 0.25, Calories: 337, Prot: 2.2, Fat: 35, NFattyAcids: 0, Carb: 3.2, K: 90, Na: 31, Mg: 7, Ca: 86, VitC: 0.2, VitB5: 0, VitPP: 0.1, Fiber: 0, Water: 59 } );
+insertIngredient( { Name: "Помидор", BE: 0.15, Calories: 19.9, Prot: 0.6, Fat: 0.2, NFattyAcids: 0, Carb: 4.2, K: 290, Na: 40, Mg: 20, Ca: 14, VitC: 25, VitB5: 0.3, VitPP: 0.5, Fiber: 0.8, Water: 93.5 } );
+insertIngredient( { Name: "Шоколад горький 75%", BE: 25, Calories: 539, Prot: 6.2, Fat: 35.4, NFattyAcids: 0, Carb: 48.2, K: 363, Na: 8, Mg: 133, Ca: 45, VitC: 0, VitB5: 0, VitPP: 0.9, Fiber: 7.4, Water: 0.8 } );
+insertIngredient( { Name: "Дрожжи сухие", BE: 1.7, Calories: 325, Prot: 40.44, Fat: 7.61, NFattyAcids: 0, Carb: 14.32, K: 955, Na: 51, Mg: 54, Ca: 30, VitC: 0.3, VitB5: 13.5, VitPP: 40.2, Fiber: 26.9, Water: 5.08 } );
+
     }
+    
 });
 
 
