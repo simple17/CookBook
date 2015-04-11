@@ -1,4 +1,4 @@
-var result = fetch('/data.json');
+var result = fetch('/recipes');
 
 
 var RecipesList = React.createClass({
