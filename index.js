@@ -30,8 +30,15 @@ app.get('/recipe', function(req, res){
   var url_parts = url.parse(req.url, true),
       query = url_parts.query;
       if(query.id){
-        resObject = db.recipes.findOne({ _id:mongojs.ObjectId('55294204f8d52d9419a29d9a') }, function(err, doc){
-          res.end(JSON.stringify(doc));
+        resObject = db.recipes.findOne({ _id:mongojs.ObjectId(query.id) }, function(err, doc){
+          var recipe = doc;
+          recipe.Ingredients = [];
+          db.recipesIngr.find({"recId" : recipe.Id}, function(err, docx){
+            console.log(docx);
+            recipe.Ingredients = docx;
+            res.end(JSON.stringify(recipe));
+          })
+         // 
         }.bind(this));
         //console.log("resObject " + resObject);
         /*resObject = {
@@ -62,6 +69,14 @@ app.get('/recipe', function(req, res){
       }
       //console.log(query.id, resObject);
       
+});
+
+app.get('/recipes', function(req, res){
+  db.recipes.find({}, function(err, docs){
+    console.log(docs.length);
+    res.end(JSON.stringify(docs));
+  });
+
 });
 
 console.log("Simple static server showing %s listening at http://%s:%s", publicDir, hostname, port);
