@@ -24,6 +24,8 @@
     "gulp": "^3.8.11",
     "gulp-react": "^3.0.1",
     "method-override": "^2.3.2",
-    "whatwg-fetch": "^0.7.0"
+    "whatwg-fetch": "^0.7.0",
+    "mongojs": "^0.18.2"
+
   }
 }
