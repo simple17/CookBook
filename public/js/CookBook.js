@@ -3,11 +3,9 @@ var CookBook = React.createClass({displayName: "CookBook",
     return {data: {currentItem: null}}
   },
   fetchRecipe: function(recipeId){
-    var recipe = fetch('/test-recipe.json');
+    var recipe = fetch('/recipe?id=' + recipeId);
 
     recipe.then(function(response) {
-        console.log('response', response)
-        console.log('header', response.headers.get('Content-Type'))
         return response.text()
       }).then(function(data) {
         this.setState({

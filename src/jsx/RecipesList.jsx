@@ -24,7 +24,8 @@ var RecipesList = React.createClass({
             );
         }.bind(this));
         return(
-          <section className="col-sm-3">
+          <section className="col-sm-2">
+            <h3>Рецепты:</h3>
             {items}
           </section>
         );

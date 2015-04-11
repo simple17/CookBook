@@ -24,7 +24,8 @@ var RecipesList = React.createClass({displayName: "RecipesList",
             );
         }.bind(this));
         return(
-          React.createElement("section", {className: "col-sm-3"}, 
+          React.createElement("section", {className: "col-sm-2"}, 
+            React.createElement("h3", null, "Рецепты:"), 
             items
           )
         );
