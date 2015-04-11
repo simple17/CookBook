@@ -1,7 +1,7 @@
 var RecipePreview = React.createClass({
       openRecipe: function(e){
         e.preventDefault();
-        this.props.clickCallback(111);
+        this.props.clickCallback(this.props.id);
       },
 			render: function(){
 		    return(
