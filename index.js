@@ -1,5 +1,7 @@
 var express = require("express"),
     url = require('url'),
+    mongojs = require("mongojs"),
+    db = mongojs("cookbook", ["ingredients", "recipes", "recipesIngr"]),
     app = express(),
     bodyParser = require('body-parser'),
     errorHandler = require('errorhandler'),
@@ -7,6 +9,7 @@ var express = require("express"),
     hostname = process.env.HOSTNAME || 'localhost',
     port = parseInt(process.env.PORT, 10) || 4567,
     publicDir = __dirname + '/public';
+
 
 app.get("/", function (req, res) {
   res.redirect("/index.html");
@@ -27,7 +30,11 @@ app.get('/recipe', function(req, res){
   var url_parts = url.parse(req.url, true),
       query = url_parts.query;
       if(query.id){
-        resObject = {
+        resObject = db.recipes.findOne({ _id:mongojs.ObjectId('55294204f8d52d9419a29d9a') }, function(err, doc){
+          res.end(JSON.stringify(doc));
+        }.bind(this));
+        //console.log("resObject " + resObject);
+        /*resObject = {
                 Id: query.id,
                 Title: "Морковка с яйцом и сахаром",
                 Image: "http://loremflickr.com/320/240",
@@ -49,12 +56,12 @@ app.get('/recipe', function(req, res){
                     AmountType: "шт."
                   }
                 ]
-              };
+              };*/
       } else{
         resObject = {}
       }
-      console.log(query.id, resObject);
-      res.end(JSON.stringify(resObject));
+      //console.log(query.id, resObject);
+      
 });
 
 console.log("Simple static server showing %s listening at http://%s:%s", publicDir, hostname, port);

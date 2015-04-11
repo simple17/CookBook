@@ -15,7 +15,15 @@ function initDatabase (done) {
       return done();
     });
   });
-}
+
+    db.createCollection("recipes", function (err, res) {
+    if (err) 
+    	{
+    		 return done(err);
+    	}
+        return done();
+    });
+  }
 
 function insertIngredient(data){
 	db.ingredients.save( data,function(error, saved)
@@ -32,13 +40,28 @@ function insertIngredient(data){
 	    } );
 }
 
+function insertRecipe(data){
+	db.recipes.save( data,function(error, saved)
+	    {
+	        if(error)
+	        {
+	            console.log("error on save:  " + error);
+	        }
+
+	        else
+	        {
+	            console.log("saved");
+	        }
+	    } );
+}
+
+
 initDatabase(function (err) {
 	if(err){
 			console.log("can't create ingredients" + err);
-			db.close();
+			//db.close();
 	}
     else{
-    	console.log("start insert");
         insertIngredient({ Name: "Мука пшеничная высшего сорта", BE: 6.67, Calories: 334, Prot: 10.8, Fat: 1.3, NFattyAcids: 0.62, Carb: 69.9, K: 122, Na: 3, Mg: 16, Ca: 18, VitC: 0, VitB5: 0.3, VitPP: 1.2, Fiber: 3.5, Water: 14 });
         insertIngredient({ Name: "Сметана 10%", BE: 0.17, Calories: 119, Prot: 2.7, Fat: 10, NFattyAcids: 0, Carb: 4.5, K: 124, Na: 40, Mg: 10, Ca: 90, VitC: 0.5, VitB5: 0.3, VitPP: 0.2, Fiber: 0, Water: 82 });
             insertIngredient( { Name: "Картофель", BE: 1.64, Calories: 77, Prot: 2, Fat: 0.4, NFattyAcids: 0.1, Carb: 16.3, K: 568, Na: 5, Mg: 23, Ca: 10, VitC: 20, VitB5: 0.3, VitPP: 1.3, Fiber: 1.4, Water: 78.6 } );
@@ -67,6 +90,9 @@ insertIngredient( { Name: "Сливки 35%", BE: 0.25, Calories: 337, Prot: 2.2
 insertIngredient( { Name: "Помидор", BE: 0.15, Calories: 19.9, Prot: 0.6, Fat: 0.2, NFattyAcids: 0, Carb: 4.2, K: 290, Na: 40, Mg: 20, Ca: 14, VitC: 25, VitB5: 0.3, VitPP: 0.5, Fiber: 0.8, Water: 93.5 } );
 insertIngredient( { Name: "Шоколад горький 75%", BE: 25, Calories: 539, Prot: 6.2, Fat: 35.4, NFattyAcids: 0, Carb: 48.2, K: 363, Na: 8, Mg: 133, Ca: 45, VitC: 0, VitB5: 0, VitPP: 0.9, Fiber: 7.4, Water: 0.8 } );
 insertIngredient( { Name: "Дрожжи сухие", BE: 1.7, Calories: 325, Prot: 40.44, Fat: 7.61, NFattyAcids: 0, Carb: 14.32, K: 955, Na: 51, Mg: 54, Ca: 30, VitC: 0.3, VitB5: 13.5, VitPP: 40.2, Fiber: 26.9, Water: 5.08 } );
+
+
+insertRecipe({ Id: 1, Title: "Говядина в сливочном соусе", Image: "http://loremflickr.com/320/240", Instructions: "Говяжью вырезку вымыть, обсушить и очистить от пленок. Нарезать на порционные куски по 290-350  толщиной примерно 5-6 см. Обвязать говядину нитой с двух сторон (вокруг волокон), для того, чтобы мясо сохранило форму. Затем обжарить его о 1.5 мин с каждой стороны на раскаленной сковороде в чайной ложе растительного масла. Посолить, поперчить и поставить в разогретую до 180'С на 10-12 мин для получения средней степени прожарки.Нарезать срокопченую грудинку тонкой соломкой, лук - мелкими кубиками. Обжарить на той же сковороде сначала первую, затем ввести второй и пассировать до прозрачности. Добавить муку, дождаться пока она станет светло коричневоо цвета, и влить вино. Дать выпариться наполовину. Необходимо все время тщательно размешивать соус, чтобы не образовывалось комков. Теперь добавить сметану, сливки, тертый сыр и, по вкусу, паприку. Сыр должен расплавиться, соус увариться еще на половину. Не забвайте ео помешивать, при такой густоте он легко может пригореть.Когда соус будет готов, его можно добавить в емкость для запекания и оставить вместе с говядиной в духовке."});
 
     }
     
