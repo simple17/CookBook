@@ -1,0 +1,25 @@
+{
+  "Id": 111,
+  "Title": "Морковка с яйцом и сахаром",
+  "Image": "http://loremflickr.com/320/240",
+  "Instructions": "Порубайте морковку, залейте яйцом и посыпьте сахаром.",
+  "Ingredients": [
+    {
+      "Name": "Морковка",
+      "Amount": "4",
+      "AmountType": "шт."
+    },
+    {
+      "Name": "Сахар",
+      "Amount": "100",
+      "AmountType": "г."
+    },
+    {
+      "Name": "Яйцо",
+      "Amount": "4",
+      "AmountType": "шт."
+    }
+  ]
+}
+
+

@@ -3,18 +3,28 @@ var CookBook = React.createClass({displayName: "CookBook",
     return {data: {currentItem: null}}
   },
   fetchRecipe: function(recipeId){
-    this.setState({
-      data: {
-        currentItem: {
-          title: 'olowos',
-          id: 123123
-        }
-      }
-    });
+    var recipe = fetch('/test-recipe.json');
+
+    recipe.then(function(response) {
+        console.log('response', response)
+        console.log('header', response.headers.get('Content-Type'))
+        return response.text()
+      }).then(function(data) {
+        this.setState({
+          data: {
+            currentItem: JSON.parse(data)
+          }
+        });
+      }.bind(this)).catch(function(ex) {
+        console.log('failed', ex)
+      });
   },
   render: function(){
     return(
       React.createElement("div", {className: "container"}, 
+        React.createElement("div", {className: "row"}, 
+          React.createElement("h1", {className: "col-sm-12 text-center"}, "CookBook")
+        ), 
         React.createElement(RecipesList, {itemClickCallback: this.fetchRecipe}), 
         React.createElement(RecipeView, {recipeData: this.state.data.currentItem})
       )

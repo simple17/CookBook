@@ -7,12 +7,12 @@ var RecipeView = React.createClass({
         return(
           <article>
             <div className="col-sm-6">
-              <h2>{this.props.recipeData.title}</h2>
+              <h2>{this.props.recipeData.Title}</h2>
               <div>recipe ingredients list</div>
-              <div>instructions</div>
+              <div>{this.props.recipeData.Instructions}</div>
             </div>
             <div className="col-sm-6">
-              <img src="http://loremflickr.com/320/240" alt=""/>
+              <img src={this.props.recipeData.Image} alt=""/>
               <div>Calc</div>
             </div>
           </article>

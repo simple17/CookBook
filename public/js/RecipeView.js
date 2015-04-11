@@ -7,12 +7,12 @@ var RecipeView = React.createClass({displayName: "RecipeView",
         return(
           React.createElement("article", null, 
             React.createElement("div", {className: "col-sm-6"}, 
-              React.createElement("h2", null, this.props.recipeData.title), 
+              React.createElement("h2", null, this.props.recipeData.Title), 
               React.createElement("div", null, "recipe ingredients list"), 
-              React.createElement("div", null, "instructions")
+              React.createElement("div", null, this.props.recipeData.Instructions)
             ), 
             React.createElement("div", {className: "col-sm-6"}, 
-              React.createElement("img", {src: "http://loremflickr.com/320/240", alt: ""}), 
+              React.createElement("img", {src: this.props.recipeData.Image, alt: ""}), 
               React.createElement("div", null, "Calc")
             )
           )

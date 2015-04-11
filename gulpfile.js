@@ -10,4 +10,8 @@ gulp.task('default', function(){
   return gulp.src(jsxSource)
       .pipe(react())
       .pipe(gulp.dest(jsxDest));  
-})
+});
+
+gulp.task('watch', function(){
+  gulp.watch(jsxSource, ['default']);
+});
