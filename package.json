@@ -15,5 +15,10 @@
   "bugs": {
     "url": "https://github.com/simple17/CookBook/issues"
   },
-  "homepage": "https://github.com/simple17/CookBook"
+  "homepage": "https://github.com/simple17/CookBook",
+  "dependencies": {
+    "express": "^4.12.3",
+    "gulp": "^3.8.11",
+    "gulp-react": "^3.0.1"
+  }
 }
