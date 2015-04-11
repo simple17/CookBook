@@ -23,6 +23,7 @@
     "express": "^4.12.3",
     "gulp": "^3.8.11",
     "gulp-react": "^3.0.1",
-    "method-override": "^2.3.2"
+    "method-override": "^2.3.2",
+    "whatwg-fetch": "^0.7.0"
   }
 }

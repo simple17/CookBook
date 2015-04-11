@@ -1,36 +1,33 @@
-var testData = [
-  {
-    id: 111,
-    title: 'recipe 1'
-  },
-  {
-    id: 432,
-    title: 'recipe 333'
-  },
-  {
-    id: 234,
-    title: 'ololo'
-  }
-];
+var result = fetch('/data.json');
 
 
-var el = document.getElementById('recipesListContainer'),
-    RecipesList = React.createClass({
+var RecipesList = React.createClass({
+      getInitialState: function(){
+        return {data: []};
+      },
+      componentDidMount:function(){
+        result.then(function(response) {
+          console.log('response', response)
+          console.log('header', response.headers.get('Content-Type'))
+          return response.text()
+        }).then(function(data) {
+          var stateData = JSON.parse(data);
+          this.setState({data: stateData});
+        }.bind(this)).catch(function(ex) {
+          console.log('failed', ex)
+        })
+      },
     	render: function(){
-        var items = testData.map(function(item){
+        var items = this.state.data.map(function(item){
           return(
-            <RecipePreview id={item.id} title={item.title}/>
+            <RecipePreview id={item.id} title={item.title} clickCallback={this.props.itemClickCallback}/>
             );
-        });
+        }.bind(this));
         return(
-          <div className="recipes-list">
+          <section className="col-sm-3">
             {items}
-          </div>
+          </section>
         );
       }
     });
 
-React.render(
-  <RecipesList/>,
-  el
-);
