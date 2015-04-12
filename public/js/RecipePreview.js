@@ -5,8 +5,11 @@ var RecipePreview = React.createClass({displayName: "RecipePreview",
       },
 			render: function(){
 		    return(
-		      React.createElement("article", {className: "row", key: this.props.id}, 
-            React.createElement("a", {href: "#", onClick: this.openRecipe}, this.props.title)
+		      React.createElement("a", {className: "list-group-item", key: this.props.id, href: "#", onClick: this.openRecipe}, 
+
+            React.createElement("h5", {class: "list-group-item-heading"}, this.props.title), 
+            React.createElement("p", {class: "list-group-item-text"}, "...")
+            
 		      )
 		    );
 		  }

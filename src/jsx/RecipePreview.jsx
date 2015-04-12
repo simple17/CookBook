@@ -5,9 +5,12 @@ var RecipePreview = React.createClass({
       },
 			render: function(){
 		    return(
-		      <article className="row" key={this.props.id}>
-            <a href="#" onClick={this.openRecipe}>{this.props.title}</a>
-		      </article>
+		      <a className="list-group-item" key={this.props.id} href="#" onClick={this.openRecipe}>
+
+            <h5 class="list-group-item-heading">{this.props.title}</h5>
+            <p class="list-group-item-text">...</p>
+            
+		      </a>
 		    );
 		  }
 		});
