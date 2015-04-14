@@ -11,7 +11,7 @@ var RecipeIngredients = React.createClass({displayName: "RecipeIngredients",
     var rows = this.props.rows.map(function(row){
       return(
         React.createElement("tr", null, 
-          React.createElement("td", null, row.Name), 
+          React.createElement("td", null, row.Ingredient.Name), 
           React.createElement("td", null, row.Amount, " ", row.AmountType)
         )
         );

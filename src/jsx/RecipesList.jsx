@@ -20,7 +20,7 @@ var RecipesList = React.createClass({
     	render: function(){
         var items = this.state.data.map(function(item){
           return(
-            <RecipePreview id={item._id} title={item.Title} clickCallback={this.props.itemClickCallback}/>
+            <RecipePreview id={item._id} title={item.Title} clickCallback={this.props.itemClickCallback} isActive={this.props.current === item._id ? 'active' : ''}/>
             );
         }.bind(this));
         return(

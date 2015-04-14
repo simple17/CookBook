@@ -4,12 +4,13 @@ var RecipePreview = React.createClass({displayName: "RecipePreview",
         this.props.clickCallback(this.props.id);
       },
 			render: function(){
+        var classes = 'list-group-item ';
+        if(this.props.isActive){
+          classes+='active';
+        }
 		    return(
-		      React.createElement("a", {className: "list-group-item", key: this.props.id, href: "#", onClick: this.openRecipe}, 
-
-            React.createElement("h5", {class: "list-group-item-heading"}, this.props.title), 
-            React.createElement("p", {class: "list-group-item-text"}, "...")
-            
+		      React.createElement("a", {className: classes, key: this.props.id, href: "#", onClick: this.openRecipe}, 
+            this.props.title
 		      )
 		    );
 		  }

@@ -20,12 +20,20 @@ var CookBook = React.createClass({displayName: "CookBook",
   render: function(){
     return(
       React.createElement("div", {className: "container"}, 
-        React.createElement("div", {className: "row"}, 
-          React.createElement("h1", {className: "col-sm-12 text-center"}, "CookBook")
-        ), 
-        React.createElement(RecipesList, {itemClickCallback: this.fetchRecipe}), 
-        React.createElement(RecipeView, {recipeData: this.state.data.currentItem})
+
+          React.createElement("h1", {className: "text-center"}, "CookBook"), 
+
+        React.createElement("div", {className: "panel panel-default"}, 
+
+          React.createElement("div", {className: "panel-body"}, 
+
+              React.createElement(RecipesList, {itemClickCallback: this.fetchRecipe, current: this.state.data.currentItem ? this.state.data.currentItem._id : null}), 
+              React.createElement(RecipeView, {recipeData: this.state.data.currentItem})
+
+          ), 
+        React.createElement("div", {className: "panel-footer"}, "FLS hackathon")
       )
+    )
     );
   }
 });
