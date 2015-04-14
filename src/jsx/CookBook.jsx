@@ -20,12 +20,20 @@ var CookBook = React.createClass({
   render: function(){
     return(
       <div className="container">
-        <div className="row">
-          <h1 className="col-sm-12 text-center">CookBook</h1>
-        </div>
-        <RecipesList itemClickCallback={this.fetchRecipe} />
-        <RecipeView recipeData={this.state.data.currentItem} />
+
+          <h1 className="text-center">CookBook</h1>
+
+        <div className="panel panel-default">
+
+          <div className="panel-body">
+
+              <RecipesList itemClickCallback={this.fetchRecipe} current={this.state.data.currentItem ? this.state.data.currentItem._id : null}/>
+              <RecipeView recipeData={this.state.data.currentItem} />
+
+          </div>
+        <div className="panel-footer">FLS hackathon</div>
       </div>
+    </div>
     );
   }
 });
