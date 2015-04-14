@@ -31,13 +31,14 @@ app.get('/recipe', function(req, res){
       query = url_parts.query;
       if(query.id){
         resObject = db.recipes.findOne({ _id:mongojs.ObjectId(query.id) }, function(err, doc){
-          var recipe = doc;
+          res.end(JSON.stringify(doc));
+          /*var recipe = doc;
           recipe.Ingredients = [];
           db.recipesIngr.find({"recId" : recipe.Id}, function(err, docx){
             console.log(docx);
             recipe.Ingredients = docx;
             res.end(JSON.stringify(recipe));
-          })
+          })*/
          // 
         }.bind(this));
         //console.log("resObject " + resObject);
