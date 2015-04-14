@@ -23,19 +23,39 @@ function initDatabase (done) {
         { Id: 1, 
           Ingredients: 
           [{
-            Amount: 4,
-            AmountType: "шт.",
-            Ingredient: { Name: "Морковь красная", AvgWeight: 75, BE: 0.58, Calories: 35, Prot: 1.3, Fat: 0.1, NFattyAcids: 0, Carb: 6.9, K: 200, Na: 21, Mg: 38, Ca: 27, VitC: 5, VitB5: 0.3, VitPP: 1, Fiber: 2.4, Water: 88 }
+            Amount: 700,
+            AmountType: "г.",
+            Ingredients: { Name: "Говяжья вырезка", BE: 0.08, Calories: 274.6, Prot: 20.4, Fat: 12.4, NFattyAcids: 5.28, Carb: 3.73, K: 289, Na: 90, Mg: 24, Ca: 15, VitC: 25, VitB5: 2.62, VitPP: 0, Fiber: 0, Water: 62.65 }
+          },
+          {
+            Amount: 120,
+            AmountType: "г.",
+            Ingredients: { Name: "Сырокопченая грудинка", BE: 0.08, Calories: 383.8, Prot: 25.4, Fat: 31.3, NFattyAcids: 5.28, Carb: 3.73, K: 289, Na: 90, Mg: 24, Ca: 15, VitC: 25, VitB5: 2.62, VitPP: 0, Fiber: 0, Water: 62.65 }
+          },
+           {
+            Amount: 150,
+            AmountType: "г.",
+            Ingredient: { Name: "Сыр Пармезан 40%", BE: 0, Calories: 392, Prot: 35.75, Fat: 25.83, NFattyAcids: 0, Carb: 3.22, K: 92, Na: 1062, Mg: 44, Ca: 1184, VitC: 0, VitB5: 0.45, VitPP: 0, Fiber: 0, Water: 29.16 }
+          },
+           {
+            Amount: 150,
+            AmountType: "г.",
+            Ingredient: { Name: "Сметана 10%", BE: 0.17, Calories: 119, Prot: 2.7, Fat: 10, NFattyAcids: 0, Carb: 4.5, K: 124, Na: 40, Mg: 10, Ca: 90, VitC: 0.5, VitB5: 0.3, VitPP: 0.2, Fiber: 0, Water: 82 }
           },
           {
             Amount: 100,
             AmountType: "г.",
-            Ingredient: { Name: "Сахарный песок", BE: 10, Calories: 399, Prot: 0, Fat: 0, NFattyAcids: 0, Carb: 99.8, K: 3, Na: 1, Mg: 0, Ca: 3, VitC: 0, VitB5: 0, VitPP: 0, Fiber: 0, Water: 0.1 }
+            Ingredient: { Name: "Сливки 20%", BE: 0.25, Calories: 207, Prot: 2.5, Fat: 20, NFattyAcids: 0, Carb: 4, K: 109, Na: 35, Mg: 8, Ca: 86, VitC:  0.3, VitB5: 0, VitPP: 0.1, Fiber: 0, Water: 72.8 }
           },
           {
-            Amount: 4,
+            Amount: 1,
             AmountType: "шт.",
-            Ingredient: { Name: "Яйцо куриное", AvgWeight: 55, BE: 0, Calories: 157, Prot: 12.7, Fat: 11.5, NFattyAcids: 0, Carb: 0.7, K: 140, Na: 134, Mg: 12, Ca: 55, VitC:  0, VitB5: 1.3, VitPP: 0.19, Fiber: 0, Water: 74.1 }
+            Ingredient: { Name: "Лук репчатый белый", AvgWeight: 120, BE: 0.79, Calories: 45, Prot: 1.5, Fat: 0, NFattyAcids: 0, Carb: 11, K: 146, Na: 4, Mg: 10, Ca: 23, VitC: 7.4, VitB5: 0.06, VitPP: 0.12, Fiber: 1.7, Water: 75 }
+          },
+          {
+            Amount: 2,
+            AmountType: "ст.л.",
+            Ingredient: { Name: "Мука пшеничная высшего сорта", BE: 6.67, Calories: 334, Prot: 10.8, Fat: 1.3, NFattyAcids: 0.62, Carb: 69.9, K: 122, Na: 3, Mg: 16, Ca: 18, VitC: 0, VitB5: 0.3, VitPP: 1.2, Fiber: 3.5, Water: 14 }
           }
           ],
           Title: "Говядина в сливочном соусе", 
